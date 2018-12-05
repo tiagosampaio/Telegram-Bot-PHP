@@ -1,4 +1,7 @@
 # Telegram-Bot-PHP
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/dbf4592287ff4ad1a7e77beb6f71e61d)](https://app.codacy.com/app/tiagoosampaio/Telegram-Bot-PHP?utm_source=github.com&utm_medium=referral&utm_content=tiagosampaio/Telegram-Bot-PHP&utm_campaign=Badge_Grade_Settings)
+
 Create powerful app integrations with this Telegram Bot SDK. It's as easy as incredible!!
 
 See an example of how easy it is to use:
