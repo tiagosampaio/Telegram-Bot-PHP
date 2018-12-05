@@ -61,6 +61,11 @@ class Method implements MethodInterface
     private $sendVoiceFactory;
     
     /**
+     * @var Method\SendVideoNoteFactory
+     */
+    private $sendVideoNoteFactory;
+    
+    /**
      * @var Method\SendVideoFactory
      */
     private $forwardMessageFactory;
@@ -76,6 +81,7 @@ class Method implements MethodInterface
         Method\SendDocumentFactory $sendDocumentFactory,
         Method\SendAnimationFactory $sendAnimationFactory,
         Method\SendVoiceFactory $sendVoiceFactory,
+        Method\SendVideoNoteFactory $sendVideoNoteFactory,
         Method\ForwardMessageFactory $forwardMessageFactory
     ) {
         $this->connection = $connection;
@@ -88,6 +94,7 @@ class Method implements MethodInterface
         $this->sendDocumentFactory = $sendDocumentFactory;
         $this->sendAnimationFactory = $sendAnimationFactory;
         $this->sendVoiceFactory = $sendVoiceFactory;
+        $this->sendVideoNoteFactory = $sendVideoNoteFactory;
         $this->forwardMessageFactory = $forwardMessageFactory;
     }
     
@@ -219,7 +226,13 @@ class Method implements MethodInterface
      */
     public function sendVideoNote($chatId, $videoNote, array $optionalConfig = [])
     {
-        /** @todo: Implement this method. */
+        /** @var Method\SendVideoNoteInterface $method */
+        $method = $this->sendVideoNoteFactory->create();
+        $method->setChatId($chatId)
+            ->setVideoNote($videoNote)
+            ->setOptionalConfig($optionalConfig);
+    
+        return $this->post($method, Entity\MessageInterface::class, ['type' => 'multipart']);
     }
     
     /**
