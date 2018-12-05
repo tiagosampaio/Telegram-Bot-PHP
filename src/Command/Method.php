@@ -51,6 +51,16 @@ class Method implements MethodInterface
     private $sendDocumentFactory;
     
     /**
+     * @var Method\SendAnimationFactory
+     */
+    private $sendAnimationFactory;
+    
+    /**
+     * @var Method\SendVoiceFactory
+     */
+    private $sendVoiceFactory;
+    
+    /**
      * @var Method\SendVideoFactory
      */
     private $forwardMessageFactory;
@@ -64,6 +74,8 @@ class Method implements MethodInterface
         Method\SendVideoFactory $sendVideoFactory,
         Method\SendAudioFactory $sendAudioFactory,
         Method\SendDocumentFactory $sendDocumentFactory,
+        Method\SendAnimationFactory $sendAnimationFactory,
+        Method\SendVoiceFactory $sendVoiceFactory,
         Method\ForwardMessageFactory $forwardMessageFactory
     ) {
         $this->connection = $connection;
@@ -74,6 +86,8 @@ class Method implements MethodInterface
         $this->sendVideoFactory = $sendVideoFactory;
         $this->sendAudioFactory = $sendAudioFactory;
         $this->sendDocumentFactory = $sendDocumentFactory;
+        $this->sendAnimationFactory = $sendAnimationFactory;
+        $this->sendVoiceFactory = $sendVoiceFactory;
         $this->forwardMessageFactory = $forwardMessageFactory;
     }
     
@@ -177,7 +191,13 @@ class Method implements MethodInterface
      */
     public function sendAnimation($chatId, $animation, array $optionalConfig = [])
     {
-        // TODO: Implement sendAnimation() method.
+        /** @var Method\SendAnimationInterface $method */
+        $method = $this->sendAnimationFactory->create();
+        $method->setChatId($chatId)
+            ->setAnimation($animation)
+            ->setOptionalConfig($optionalConfig);
+    
+        return $this->post($method, Entity\MessageInterface::class, ['type' => 'multipart']);
     }
     
     /**
@@ -185,7 +205,13 @@ class Method implements MethodInterface
      */
     public function sendVoice($chatId, $voice, array $optionalConfig = [])
     {
-        // TODO: Implement sendVoice() method.
+        /** @var Method\SendVoiceInterface $method */
+        $method = $this->sendVoiceFactory->create();
+        $method->setChatId($chatId)
+            ->setVoice($voice)
+            ->setOptionalConfig($optionalConfig);
+    
+        return $this->post($method, Entity\MessageInterface::class, ['type' => 'multipart']);
     }
     
     /**
@@ -193,7 +219,7 @@ class Method implements MethodInterface
      */
     public function sendVideoNote($chatId, $videoNote, array $optionalConfig = [])
     {
-        // TODO: Implement sendVideoNote() method.
+        /** @todo: Implement this method. */
     }
     
     /**
@@ -201,7 +227,7 @@ class Method implements MethodInterface
      */
     public function sendMediaGroup($chatId, $media, array $optionalConfig = [])
     {
-        // TODO: Implement sendMediaGroup() method.
+        /** @todo: Implement this method. */
     }
     
     /**
@@ -209,7 +235,7 @@ class Method implements MethodInterface
      */
     public function sendLocation($chatId, $latitude, $longitude, array $optionalConfig = [])
     {
-        // TODO: Implement sendLocation() method.
+        /** @todo: Implement this method. */
     }
     
     /**
@@ -217,7 +243,7 @@ class Method implements MethodInterface
      */
     public function editMessageLiveLocation($chatId, $latitude, $longitude, array $optionalConfig = [])
     {
-        // TODO: Implement editMessageLiveLocation() method.
+        /** @todo: Implement this method. */
     }
     
     /**
@@ -225,7 +251,7 @@ class Method implements MethodInterface
      */
     public function stopMessageLiveLocation(array $optionalConfig = [])
     {
-        // TODO: Implement stopMessageLiveLocation() method.
+        /** @todo: Implement this method. */
     }
     
     /**
@@ -233,7 +259,7 @@ class Method implements MethodInterface
      */
     public function sendVenue($chatId, $latitude, $longitude, $title, $address, array $optionalConfig = [])
     {
-        // TODO: Implement sendVenue() method.
+        /** @todo: Implement this method. */
     }
     
     /**
@@ -241,7 +267,7 @@ class Method implements MethodInterface
      */
     public function sendContact($chatId, $phone, $firstname, array $optionalConfig = [])
     {
-        // TODO: Implement sendContact() method.
+        /** @todo: Implement this method. */
     }
     
     /**
@@ -249,7 +275,7 @@ class Method implements MethodInterface
      */
     public function sendChatAction($chatId, $action)
     {
-        // TODO: Implement sendChatAction() method.
+        /** @todo: Implement this method. */
     }
     
     /**
@@ -257,7 +283,7 @@ class Method implements MethodInterface
      */
     public function getUserProfilePhotos($userId, array $optionalConfig = [])
     {
-        // TODO: Implement getUserProfilePhotos() method.
+        /** @todo: Implement this method. */
     }
     
     /**
@@ -265,7 +291,7 @@ class Method implements MethodInterface
      */
     public function getFile($fileId)
     {
-        // TODO: Implement getFile() method.
+        /** @todo: Implement this method. */
     }
     
     /**
@@ -273,7 +299,7 @@ class Method implements MethodInterface
      */
     public function kickChatMember($chatId, $userId, array $optionalConfig = [])
     {
-        // TODO: Implement kickChatMember() method.
+        /** @todo: Implement this method. */
     }
     
     /**
@@ -281,7 +307,7 @@ class Method implements MethodInterface
      */
     public function unbanChatMember($chatId, $userId)
     {
-        // TODO: Implement unbanChatMember() method.
+        /** @todo: Implement this method. */
     }
     
     /**
@@ -289,7 +315,7 @@ class Method implements MethodInterface
      */
     public function restrictChatMember($chatId, $userId, array $optionalConfig = [])
     {
-        // TODO: Implement restrictChatMember() method.
+        /** @todo: Implement this method. */
     }
     
     /**
@@ -297,7 +323,7 @@ class Method implements MethodInterface
      */
     public function promoteChatMember($chatId, $userId, array $optionalConfig = [])
     {
-        // TODO: Implement promoteChatMember() method.
+        /** @todo: Implement this method. */
     }
     
     /**
@@ -305,7 +331,7 @@ class Method implements MethodInterface
      */
     public function exportChatInviteLink($chatId)
     {
-        // TODO: Implement exportChatInviteLink() method.
+        /** @todo: Implement this method. */
     }
     
     /**
@@ -313,7 +339,7 @@ class Method implements MethodInterface
      */
     public function setChatPhoto($chatId, $photo)
     {
-        // TODO: Implement setChatPhoto() method.
+        /** @todo: Implement this method. */
     }
     
     /**
@@ -321,7 +347,7 @@ class Method implements MethodInterface
      */
     public function deleteChatPhoto($chatId)
     {
-        // TODO: Implement deleteChatPhoto() method.
+        /** @todo: Implement this method. */
     }
     
     /**
@@ -329,7 +355,7 @@ class Method implements MethodInterface
      */
     public function setChatTitle($chatId, $title)
     {
-        // TODO: Implement setChatTitle() method.
+        /** @todo: Implement this method. */
     }
     
     /**
@@ -337,7 +363,7 @@ class Method implements MethodInterface
      */
     public function setChatDescription($chatId, $description)
     {
-        // TODO: Implement setChatDescription() method.
+        /** @todo: Implement this method. */
     }
     
     /**
@@ -345,7 +371,7 @@ class Method implements MethodInterface
      */
     public function pinChatMessage($chatId, $messageId, array $optionalConfig = [])
     {
-        // TODO: Implement pinChatMessage() method.
+        /** @todo: Implement this method. */
     }
     
     /**
@@ -353,7 +379,7 @@ class Method implements MethodInterface
      */
     public function unpinChatMessage($chatId)
     {
-        // TODO: Implement unpinChatMessage() method.
+        /** @todo: Implement this method. */
     }
     
     /**
@@ -361,7 +387,7 @@ class Method implements MethodInterface
      */
     public function leaveChat($chatId)
     {
-        // TODO: Implement leaveChat() method.
+        /** @todo: Implement this method. */
     }
     
     /**
@@ -369,7 +395,7 @@ class Method implements MethodInterface
      */
     public function getChat($chatId)
     {
-        // TODO: Implement getChat() method.
+        /** @todo: Implement this method. */
     }
     
     /**
@@ -377,7 +403,7 @@ class Method implements MethodInterface
      */
     public function getChatAdministrators($chatId)
     {
-        // TODO: Implement getChatAdministrators() method.
+        /** @todo: Implement this method. */
     }
     
     /**
@@ -385,7 +411,7 @@ class Method implements MethodInterface
      */
     public function getChatMembersCount($chatId)
     {
-        // TODO: Implement getChatMembersCount() method.
+        /** @todo: Implement this method. */
     }
     
     /**
@@ -393,7 +419,7 @@ class Method implements MethodInterface
      */
     public function getChatMember($chatId, $userId)
     {
-        // TODO: Implement getChatMember() method.
+        /** @todo: Implement this method. */
     }
     
     /**
@@ -401,7 +427,7 @@ class Method implements MethodInterface
      */
     public function setChatStickerSet($chatId, $stickerSetName)
     {
-        // TODO: Implement setChatStickerSet() method.
+        /** @todo: Implement this method. */
     }
     
     /**
@@ -409,7 +435,7 @@ class Method implements MethodInterface
      */
     public function deleteChatStickerSet($chatId)
     {
-        // TODO: Implement deleteChatStickerSet() method.
+        /** @todo: Implement this method. */
     }
     
     /**
@@ -417,7 +443,7 @@ class Method implements MethodInterface
      */
     public function answerCallbackQuery($callBackQueryId, array $optionalConfig = [])
     {
-        // TODO: Implement answerCallbackQuery() method.
+        /** @todo: Implement this method. */
     }
     
     /**
@@ -425,7 +451,7 @@ class Method implements MethodInterface
      */
     public function editMessageText($chatId, $messageId, $text, array $optionalConfig = [])
     {
-        // TODO: Implement editMessageText() method.
+        /** @todo: Implement this method. */
     }
     
     /**
@@ -433,7 +459,7 @@ class Method implements MethodInterface
      */
     public function editMessageCaption($chatId, $messageId, $caption, array $optionalConfig = [])
     {
-        // TODO: Implement editMessageCaption() method.
+        /** @todo: Implement this method. */
     }
     
     /**
@@ -441,7 +467,7 @@ class Method implements MethodInterface
      */
     public function editMessageMedia($chatId, $messageId, $media, array $optionalConfig = [])
     {
-        // TODO: Implement editMessageMedia() method.
+        /** @todo: Implement this method. */
     }
     
     /**
@@ -449,7 +475,7 @@ class Method implements MethodInterface
      */
     public function editMessageReplyMarkup($chatId, $messageId, $replyMarkup, array $optionalConfig = [])
     {
-        // TODO: Implement editMessageReplyMarkup() method.
+        /** @todo: Implement this method. */
     }
     
     /**
@@ -457,6 +483,6 @@ class Method implements MethodInterface
      */
     public function deleteMessage($chatId, $messageId)
     {
-        // TODO: Implement deleteMessage() method.
+        /** @todo: Implement this method. */
     }
 }

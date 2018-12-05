@@ -16,6 +16,11 @@ abstract class CommandAbstract extends ObjectData implements CommandInterface
      * @var string
      */
     protected $urlPath = null;
+    
+    /**
+     * @var boolean
+     */
+    protected $exportMultipart = false;
 
     /**
      * @var string

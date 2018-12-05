@@ -7,30 +7,32 @@ namespace Telegram\Command\Method;
 use Telegram\Command\CommandMultipartAbstract;
 
 /**
- * Class SendAudio
+ * Class SendVoice
  * @package Telegram\Command\Method
  */
-class SendAudio extends CommandMultipartAbstract implements SendAudioInterface
+class SendVoice extends CommandMultipartAbstract implements SendVoiceInterface
 {
     /**
      * @var string
      */
-    protected $urlPath = 'sendAudio';
-    
+    protected $urlPath = 'sendVoice';
+
     /**
      * {@inheritdoc}
      */
-    public function setChatId(int $chatId)
+    public function setChatId($chatId)
     {
-        return $this->setData('chat_id', $chatId);
+        $this->setData('chat_id', $chatId);
+        return $this;
     }
-    
+
     /**
      * {@inheritdoc}
      */
-    public function setAudio($audio)
+    public function setVoice($voice)
     {
-        return $this->setData('audio', $audio);
+        $this->setData('voice', $voice);
+        return $this;
     }
     
     /**
@@ -38,6 +40,6 @@ class SendAudio extends CommandMultipartAbstract implements SendAudioInterface
      */
     protected function getMultipartFileType()
     {
-        return 'audio';
+        return 'voice';
     }
 }

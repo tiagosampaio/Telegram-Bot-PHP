@@ -4,13 +4,13 @@ declare(strict_types = 1);
 
 namespace Telegram\Command\Method;
 
-use Telegram\Command\CommandAbstract;
+use Telegram\Command\CommandMultipartAbstract;
 
 /**
  * Class SendPhoto
  * @package Telegram\Command\Method
  */
-class SendPhoto extends CommandAbstract implements SendPhotoInterface
+class SendPhoto extends CommandMultipartAbstract implements SendPhotoInterface
 {
     /**
      * @var string
@@ -79,25 +79,12 @@ class SendPhoto extends CommandAbstract implements SendPhotoInterface
         $this->setData('reply_markup', $markup);
         return $this;
     }
-
+    
     /**
-     * @return array
+     * @return string
      */
-    public function toArray()
+    protected function getMultipartFileType()
     {
-        $result = [];
-
-        foreach (parent::toArray() as $key => $value) {
-            if ($key == 'photo') {
-                $value = fopen($value, 'r');
-            }
-
-            $result[] = [
-                'name'     => $key,
-                'contents' => $value,
-            ];
-        }
-
-        return $result;
+        return 'photo';
     }
 }

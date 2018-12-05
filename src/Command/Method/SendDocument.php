@@ -4,13 +4,13 @@ declare(strict_types = 1);
 
 namespace Telegram\Command\Method;
 
-use Telegram\Command\CommandAbstract;
+use Telegram\Command\CommandMultipartAbstract;
 
 /**
  * Class SendDocument
  * @package Telegram\Command\Method
  */
-class SendDocument extends CommandAbstract implements SendDocumentInterface
+class SendDocument extends CommandMultipartAbstract implements SendDocumentInterface
 {
     /**
      * @var string
@@ -34,23 +34,10 @@ class SendDocument extends CommandAbstract implements SendDocumentInterface
     }
     
     /**
-     * @return array
+     * @return string
      */
-    public function toArray()
+    protected function getMultipartFileType()
     {
-        $result = [];
-        
-        foreach (parent::toArray() as $key => $value) {
-            if ($key == 'document') {
-                $value = fopen($value, 'r');
-            }
-            
-            $result[] = [
-                'name'     => $key,
-                'contents' => $value,
-            ];
-        }
-        
-        return $result;
+        return 'document';
     }
 }
