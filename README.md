@@ -1,4 +1,7 @@
-# Telegram-Bot-PHP
+# Telegram Bot PHP
+
+![Telegram](/assets/images/telegram.png)
+
 Create powerful app integrations with this Telegram Bot SDK. It's as easy as incredible!!
 
 [![Build Status](https://travis-ci.org/tiagosampaio/Telegram-Bot-PHP.svg?branch=master)](https://travis-ci.org/tiagosampaio/Telegram-Bot-PHP)
@@ -40,6 +43,8 @@ See an example of how easy it is to use:
 ## Telegram BotFather
 
 This link to [BotFather](https://telegram.me/BotFather) will guide you to create your Telegram Bot.
+
+![Telegram BotFather](/assets/images/botfather.jpg)
 
 ## Authors
 
