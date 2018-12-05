@@ -23,7 +23,7 @@ See an example of how easy it is to use:
 
 Tiago Sampaio
 
-## Licença
+## License
 > Telegram Bot PHP is a personal project initiated in late 2018 by Tiago Sampaio. It's free for use.
 
 [The Open Software License 3.0 (OSL-3.0)](https://opensource.org/licenses/osl-3.0.php).
