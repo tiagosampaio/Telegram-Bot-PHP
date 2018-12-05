@@ -7,7 +7,7 @@
 Create powerful app integrations with this Telegram Bot SDK. It's as easy as incredible!!
 
 [![Build Status](https://travis-ci.org/tiagosampaio/Telegram-Bot-PHP.svg?branch=master)](https://travis-ci.org/tiagosampaio/Telegram-Bot-PHP)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/885ef06d05854b0691ac6592e2667401)](https://www.codacy.com/app/tiagoosampaio/Telegram-Bot-PHP?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tiagosampaio/Telegram-Bot-PHP&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f2d11df6b0824cb98fbd7bac12b61182)](https://www.codacy.com/app/tiagoosampaio/Telegram-Bot-PHP?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tiagosampaio/Telegram-Bot-PHP&amp;utm_campaign=Badge_Grade)
 
 See an example of how easy it is to use:
 
