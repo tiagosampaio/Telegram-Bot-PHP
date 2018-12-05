@@ -66,6 +66,11 @@ class Method implements MethodInterface
     private $sendVideoNoteFactory;
     
     /**
+     * @var Method\SendContactFactory
+     */
+    private $sendContactFactory;
+    
+    /**
      * @var Method\SendVideoFactory
      */
     private $forwardMessageFactory;
@@ -82,6 +87,7 @@ class Method implements MethodInterface
         Method\SendAnimationFactory $sendAnimationFactory,
         Method\SendVoiceFactory $sendVoiceFactory,
         Method\SendVideoNoteFactory $sendVideoNoteFactory,
+        Method\SendContactFactory $sendContactFactory,
         Method\ForwardMessageFactory $forwardMessageFactory
     ) {
         $this->connection = $connection;
@@ -95,6 +101,7 @@ class Method implements MethodInterface
         $this->sendAnimationFactory = $sendAnimationFactory;
         $this->sendVoiceFactory = $sendVoiceFactory;
         $this->sendVideoNoteFactory = $sendVideoNoteFactory;
+        $this->sendContactFactory = $sendContactFactory;
         $this->forwardMessageFactory = $forwardMessageFactory;
     }
     
@@ -280,7 +287,14 @@ class Method implements MethodInterface
      */
     public function sendContact($chatId, $phone, $firstname, array $optionalConfig = [])
     {
-        /** @todo: Implement this method. */
+        /** @var Method\SendContactInterface $method */
+        $method = $this->sendContactFactory->create();
+        $method->setChatId($chatId)
+            ->setPhoneNumber($phone)
+            ->setFirstName($firstname)
+            ->setOptionalConfig($optionalConfig);
+    
+        return $this->post($method, Entity\MessageInterface::class);
     }
     
     /**

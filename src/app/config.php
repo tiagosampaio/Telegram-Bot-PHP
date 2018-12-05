@@ -35,6 +35,7 @@ return [
     Method\SendAnimationInterface::class => autowire(Method\SendAnimation::class),
     Method\SendVoiceInterface::class => autowire(Method\SendVoice::class),
     Method\SendVideoNoteInterface::class => autowire(Method\SendVideoNote::class),
+    Method\SendContactInterface::class => autowire(Method\SendContact::class),
     Method\ForwardMessageInterface::class => autowire(Method\ForwardMessage::class),
     
     /** Updates */
