@@ -1,0 +1,51 @@
+{
+  "name": "tiagosampaio/telegram-bot-php",
+  "description": "A great library to integrate your PHP application with Telegram Bot API.",
+  "type": "project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Tiago Sampaio",
+      "email": "tiago@tiagosampaio.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+      "php-di/php-di": "^6.0",
+    "guzzlehttp/guzzle": "^6.3"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^6.4",
+    "fzaninotto/faker": "^1.8",
+    "squizlabs/php_codesniffer": "^3.3",
+    "phpmd/phpmd": "^2.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "Telegram\\": "src/"
+    },
+    "files": [
+      "src/app/bootstrap.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "TelegramTest\\": "dev/test/unit/Telegram"
+    }
+  },
+  "scripts": {
+    "phpunit": [
+      "vendor/bin/phpunit -c dev/test/unit/phpunit.xml.dist dev/test/unit/"
+    ],
+    "phpcs": [
+      "vendor/bin/phpcs --standard=PSR2 --severity=1 src"
+    ],
+    "tests": [
+      "@phpunit",
+      "@phpcs"
+    ],
+    "post-autoload-dump": [
+      "@tests"
+    ]
+  }
+}
