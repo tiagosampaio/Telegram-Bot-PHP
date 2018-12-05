@@ -2,7 +2,7 @@
   "name": "tiagosampaio/telegram-bot-php",
   "description": "The easiest way to integrate your PHP application with Telegram Bots.",
   "type": "library",
-  "keywords": ["faker", "fixtures", "data"],
+  "keywords": ["telegram", "sdk", "telegram-bot"],
   "license": "OSL-3.0",
   "authors": [
     {
