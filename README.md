@@ -14,20 +14,26 @@ See an example of how easy it is to use:
     require_once __DIR__ . '/vendor/autoload.php';
 
     /**
-     * Assuming you already have the token  
+     * Assuming you already have the token created using the [BotFather](https://telegram.me/BotFather)
      */
     $token = '[SOME TOKEN HASH]';
     
     /**
-     * Assuming you already have the token  
+     * And that you have the chat ID too, you can simply define the text you'd like to send, for instance.
      */
     $chatId = [SOME CHAT ID];
     $text   = \Faker\Factory::create()->sentence(20);
 
-    /** @var \Telegram\ApiInterface $api */
+    /**
+     * Create and instance of the API by using the ApiFactory.
+     * @var \Telegram\ApiInterface $api
+     */
     $api = \Telegram\ApiFactory::create($token);
     
-    /** @var \Telegram\Service\ResultInterface $response */
+    /**
+     * And call the proper method.
+     * @var \Telegram\Service\ResultInterface $response
+     */
     $response = $api->methods()->sendMessage($chatId, $text);
 ```
  
