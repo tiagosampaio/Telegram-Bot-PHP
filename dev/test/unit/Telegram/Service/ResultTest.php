@@ -39,7 +39,8 @@ class ResultTest extends TestCase
         
         $this->object = ObjectManager::create(ResultInterface::class, [
             'response' => $this->response,
-            'godFactory' => $this->godFactory
+            'godFactory' => $this->godFactory,
+            'objectTypeClass' => 'SomeClass',
         ]);
     }
     
