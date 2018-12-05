@@ -59,7 +59,7 @@ class Result implements ResultInterface
      */
     public function parse()
     {
-        if (!$this->response->canParse()) {
+        if (!$this->response->canParse() || empty($this->objectTypeClass)) {
             return false;
         }
         

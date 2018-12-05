@@ -31,6 +31,11 @@ class Method implements MethodInterface
     private $getMeFactory;
     
     /**
+     * @var Method\GetChatFactory
+     */
+    private $getChatFactory;
+    
+    /**
      * @var Method\SendPhotoFactory
      */
     private $sendPhotoFactory;
@@ -80,6 +85,7 @@ class Method implements MethodInterface
         \Telegram\Service\ResultFactory $resultFactory,
         Method\SendMessageFactory $sendMessageFactory,
         Method\GetMeFactory $getMeFactory,
+        Method\GetChatFactory $getChatFactory,
         Method\SendPhotoFactory $sendPhotoFactory,
         Method\SendVideoFactory $sendVideoFactory,
         Method\SendAudioFactory $sendAudioFactory,
@@ -94,6 +100,7 @@ class Method implements MethodInterface
         $this->resultFactory = $resultFactory;
         $this->sendMessageFactory = $sendMessageFactory;
         $this->getMeFactory = $getMeFactory;
+        $this->getChatFactory = $getChatFactory;
         $this->sendPhotoFactory = $sendPhotoFactory;
         $this->sendVideoFactory = $sendVideoFactory;
         $this->sendAudioFactory = $sendAudioFactory;
@@ -382,7 +389,15 @@ class Method implements MethodInterface
      */
     public function setChatTitle($chatId, $title)
     {
-        /** @todo: Implement this method. */
+        /** @todo: Implement this method in the correct way. */
+        
+        $data = [
+            'chat_id' => $chatId,
+            'title'   => $title
+        ];
+        
+        $response = $this->connection->post('setChatTitle', $data);
+        return $this->prepareResult($response);
     }
     
     /**
@@ -422,7 +437,11 @@ class Method implements MethodInterface
      */
     public function getChat($chatId)
     {
-        /** @todo: Implement this method. */
+        /** @var Method\GetChatInterface $method */
+        $method = $this->getChatFactory->create();
+        $method->setChatId($chatId);
+    
+        return $this->post($method, Entity\ChatInterface::class);
     }
     
     /**

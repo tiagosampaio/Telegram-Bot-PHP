@@ -28,6 +28,7 @@ return [
     /** Method Objects */
     Method\SendMessageInterface::class => autowire(Method\SendMessage::class),
     Method\GetMeInterface::class => autowire(Method\GetMe::class),
+    Method\GetChatInterface::class => autowire(Method\GetChat::class),
     Method\SendPhotoInterface::class => autowire(Method\SendPhoto::class),
     Method\SendVideoInterface::class => autowire(Method\SendVideo::class),
     Method\SendAudioInterface::class => autowire(Method\SendAudio::class),
