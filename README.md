@@ -14,7 +14,7 @@ See an example of how easy it is to use:
     require_once __DIR__ . '/vendor/autoload.php';
 
     /**
-     * Assuming you already have the token created using the [BotFather](https://telegram.me/BotFather)
+     * Assuming you already have the token created using the BotFather.
      */
     $token = '[SOME TOKEN HASH]';
     
@@ -36,7 +36,11 @@ See an example of how easy it is to use:
      */
     $response = $api->methods()->sendMessage($chatId, $text);
 ```
- 
+
+## Telegram BotFather
+
+This link to [BotFather](https://telegram.me/BotFather) will guide you to create your Telegram Bot.
+
 ## Authors
 
 Tiago Sampaio - [tiago@tiagosampaio.com](mailto:tiago@tiagosampaio.com)
