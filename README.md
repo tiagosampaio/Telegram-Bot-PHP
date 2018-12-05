@@ -8,11 +8,20 @@ See an example of how easy it is to use:
 
 ```php
 <?php
-
+    /**
+     * Inject the composer's autoload file.
+     */
     require_once __DIR__ . '/vendor/autoload.php';
 
+    /**
+     * Assuming you already have the token  
+     */
+    $token = '[SOME TOKEN HASH]';
+    
+    /**
+     * Assuming you already have the token  
+     */
     $chatId = [SOME CHAT ID];
-    $token  = '[SOME TOKEN HASH]';
     $text   = \Faker\Factory::create()->sentence(20);
 
     /** @var \Telegram\ApiInterface $api */
@@ -24,7 +33,7 @@ See an example of how easy it is to use:
  
 ## Authors
 
-Tiago Sampaio
+Tiago Sampaio - [tiago@tiagosampaio.com](mailto:tiago@tiagosampaio.com)
 
 ## License
 > Telegram Bot PHP is a personal project initiated in late 2018 by Tiago Sampaio. It's free for use.
