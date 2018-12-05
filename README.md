@@ -1,6 +1,8 @@
+![Telegram](/assets/images/telegram.png)
+
 # Telegram Bot PHP
 
-![Telegram](/assets/images/telegram.png)
+#### The easiest way to integrate your PHP application with Telegram Bots.
 
 Create powerful app integrations with this Telegram Bot SDK. It's as easy as incredible!!
 
