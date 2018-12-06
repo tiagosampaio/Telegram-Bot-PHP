@@ -12,18 +12,12 @@ use Telegram\Command\CommandAbstract;
  */
 class SendContact extends CommandAbstract implements SendContactInterface
 {
-    /**
-     * @var string
-     */
-    protected $urlPath = 'sendContact';
-    
+    use Parts\Chat;
+
     /**
      * {@inheritdoc}
      */
-    public function setChatId($chatId)
-    {
-        return $this->setData('chat_id', $chatId);
-    }
+    protected $urlPath = 'sendContact';
     
     /**
      * {@inheritdoc}
