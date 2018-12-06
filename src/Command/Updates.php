@@ -44,7 +44,7 @@ class Updates implements UpdatesInterface
      * @var \Telegram\ObjectType\Entity\UpdatesFactory
      */
     private $entityUpdatesFactory;
-    
+
     /**
      * Updates constructor.
      *
@@ -54,6 +54,7 @@ class Updates implements UpdatesInterface
      * @param Updates\GetUpdatesFactory             $getUpdatesFactory
      * @param Updates\SetWebhookFactory             $setWebhookFactory
      * @param Updates\GetWebhookInfoFactory         $getWebhookInfoFactory
+     * @param Entity\UpdatesFactory                 $entityUpdatesFactory
      */
     public function __construct(
         \Telegram\Service\ConnectionInterface $connection,
@@ -61,7 +62,8 @@ class Updates implements UpdatesInterface
         Updates\DeleteWebhookFactory $deleteWebhookFactory,
         Updates\GetUpdatesFactory $getUpdatesFactory,
         Updates\SetWebhookFactory $setWebhookFactory,
-        Updates\GetWebhookInfoFactory $getWebhookInfoFactory
+        Updates\GetWebhookInfoFactory $getWebhookInfoFactory,
+        Entity\UpdatesFactory $entityUpdatesFactory
     ) {
         $this->connection = $connection;
         $this->resultFactory = $resultFactory;
@@ -69,6 +71,7 @@ class Updates implements UpdatesInterface
         $this->getUpdatesFactory = $getUpdatesFactory;
         $this->setWebhookFactory = $setWebhookFactory;
         $this->getWebhookInfoFactory = $getWebhookInfoFactory;
+        $this->entityUpdatesFactory = $entityUpdatesFactory;
     }
     
     /**
