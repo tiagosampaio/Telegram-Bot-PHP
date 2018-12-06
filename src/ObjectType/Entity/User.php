@@ -15,45 +15,48 @@ class User extends EntityAbstract implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function setIsBot(bool $flat)
+    public function getId()
     {
-        $this->setData(self::FIELD_IS_BOT, (bool) $flat);
-        return $this;
+        return $this->getData(self::FIELD_ID);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setFirstName(string $firstName)
+    public function getIsBot()
     {
-        $this->setData(self::FIELD_FIRST_NAME, $firstName);
-        return $this;
+        return $this->getData(self::FIELD_IS_BOT);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setLastName(string $lastName)
+    public function getFirstName()
     {
-        $this->setData(self::FIELD_LAST_NAME, $lastName);
-        return $this;
+        return $this->getData(self::FIELD_FIRST_NAME);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setUsername(string $username)
+    public function getLastName()
     {
-        $this->setData(self::FIELD_USERNAME, $username);
-        return $this;
+        return $this->getData(self::FIELD_LAST_NAME);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setLanguageCode($languageCode)
+    public function getUsername()
     {
-        $this->setData(self::FIELD_LANGUAGE_CODE, $languageCode);
-        return $this;
+        return $this->getData(self::FIELD_USERNAME);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLanguageCode()
+    {
+        return $this->getData(self::FIELD_LANGUAGE_CODE);
     }
 }

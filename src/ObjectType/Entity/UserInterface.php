@@ -41,32 +41,32 @@ interface UserInterface
     const FIELD_LANGUAGE_CODE = 'language_code';
 
     /**
-     * @param bool $flat
-     * @return mixed
+     * @return integer
      */
-    public function setIsBot(bool $flat);
+    public function getId();
 
     /**
-     * @param string $firstName
-     * @return mixed
+     * @return boolean
      */
-    public function setFirstName(string $firstName);
+    public function getIsBot();
 
     /**
-     * @param string $lastName
-     * @return mixed
+     * @return string
      */
-    public function setLastName(string $lastName);
+    public function getFirstName();
 
     /**
-     * @param string $username
-     * @return mixed
+     * @return string
      */
-    public function setUsername(string $username);
+    public function getLastName();
 
     /**
-     * @param string $languageCode
-     * @return mixed
+     * @return string
      */
-    public function setLanguageCode($languageCode);
+    public function getUsername();
+
+    /**
+     * @return string
+     */
+    public function getLanguageCode();
 }
