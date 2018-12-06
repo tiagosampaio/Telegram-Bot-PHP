@@ -108,7 +108,7 @@ class Message extends EntityAbstract implements MessageInterface
      */
     public function getFrom()
     {
-        return (array) $this->getData(self::FIELD_FROM);
+        return $this->getData(self::FIELD_FROM);
     }
     
     /**
@@ -116,7 +116,7 @@ class Message extends EntityAbstract implements MessageInterface
      */
     public function getForwardFrom()
     {
-        return (array) $this->getData(self::FIELD_FORWARD_FROM);
+        return $this->getData(self::FIELD_FORWARD_FROM);
     }
     
     /**
@@ -124,7 +124,7 @@ class Message extends EntityAbstract implements MessageInterface
      */
     public function getChat()
     {
-        return (array) $this->getData(self::FIELD_CHAT);
+        return $this->getData(self::FIELD_CHAT);
     }
     
     /**
@@ -132,7 +132,7 @@ class Message extends EntityAbstract implements MessageInterface
      */
     public function getForwardFromChat()
     {
-        return (array) $this->getData(self::FIELD_FORWARD_FROM_CHAT);
+        return $this->getData(self::FIELD_FORWARD_FROM_CHAT);
     }
     
     /**
@@ -140,7 +140,7 @@ class Message extends EntityAbstract implements MessageInterface
      */
     public function getReplyToMessage()
     {
-        return (array) $this->getData(self::FIELD_REPLY_TO_MESSAGE);
+        return $this->getData(self::FIELD_REPLY_TO_MESSAGE);
     }
     
     /**
