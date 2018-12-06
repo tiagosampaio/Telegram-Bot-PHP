@@ -11,20 +11,9 @@ use Telegram\Command\Method\Parts\InlineMessageInterface as InlineMessage;
 use Telegram\Command\Method\Parts\ReplyMarkupInterface as ReplyMarkup;
 
 /**
- * Interface EditMessageCaptionInterface
+ * Interface EditMessageMediaInterface
  * @package Telegram\Command\Method
  */
-interface EditMessageCaptionInterface extends CommandInterface, Chat, Message, InlineMessage, ReplyMarkup
+interface EditMessageReplyMarkupInterface extends CommandInterface, Chat, Message, InlineMessage, ReplyMarkup
 {
-    /**
-     * @param  string $caption
-     * @return $this
-     */
-    public function setCaption($caption);
-
-    /**
-     * @param  string $parseMode
-     * @return $this
-     */
-    public function setParseMode($parseMode);
 }

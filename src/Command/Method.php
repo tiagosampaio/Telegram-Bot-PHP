@@ -433,7 +433,14 @@ class Method implements MethodInterface
      */
     public function editMessageText($chatId, $messageId, $text, array $optionalConfig = [])
     {
-        /** @todo: Implement this method. */
+        /** @var Method\EditMessageTextInterface $method */
+        $method = $this->methodFactory->createEditMessageText()
+            ->setChatId($chatId)
+            ->setMessageId($messageId)
+            ->setText($text)
+            ->setOptionalConfig($optionalConfig);
+
+        return $this->post($method, Entity\MessageInterface::class);
     }
     
     /**
@@ -441,7 +448,14 @@ class Method implements MethodInterface
      */
     public function editMessageCaption($chatId, $messageId, $caption, array $optionalConfig = [])
     {
-        /** @todo: Implement this method. */
+        /** @var Method\EditMessageCaptionInterface $method */
+        $method = $this->methodFactory->createEditMessageCaption()
+            ->setChatId($chatId)
+            ->setMessageId($messageId)
+            ->setCaption($caption)
+            ->setOptionalConfig($optionalConfig);
+
+        return $this->post($method, Entity\MessageInterface::class);
     }
     
     /**
@@ -449,7 +463,14 @@ class Method implements MethodInterface
      */
     public function editMessageMedia($chatId, $messageId, $media, array $optionalConfig = [])
     {
-        /** @todo: Implement this method. */
+        /** @var Method\EditMessageMediaInterface $method */
+        $method = $this->methodFactory->createEditMessageMedia()
+            ->setChatId($chatId)
+            ->setMessageId($messageId)
+            ->setMedia($media)
+            ->setOptionalConfig($optionalConfig);
+
+        return $this->post($method, Entity\MessageInterface::class);
     }
     
     /**
@@ -457,7 +478,14 @@ class Method implements MethodInterface
      */
     public function editMessageReplyMarkup($chatId, $messageId, $replyMarkup, array $optionalConfig = [])
     {
-        /** @todo: Implement this method. */
+        /** @var Method\EditMessageReplyMarkupInterface $method */
+        $method = $this->methodFactory->createEditMessageReplyMarkup()
+            ->setChatId($chatId)
+            ->setMessageId($messageId)
+            ->setReplyMarkup($replyMarkup)
+            ->setOptionalConfig($optionalConfig);
+
+        return $this->post($method, Entity\MessageInterface::class);
     }
     
     /**

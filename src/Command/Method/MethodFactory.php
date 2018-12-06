@@ -23,6 +23,26 @@ final class MethodFactory
     private $deleteMessageFactory;
 
     /**
+     * @var EditMessageTextFactory
+     */
+    private $editMessageTextFactory;
+
+    /**
+     * @var EditMessageCaptionFactory
+     */
+    private $editMessageCaptionFactory;
+
+    /**
+     * @var EditMessageMediaFactory
+     */
+    private $editMessageMediaFactory;
+
+    /**
+     * @var EditMessageReplyMarkupFactory
+     */
+    private $editMessageReplyMarkupFactory;
+
+    /**
      * @var GetChatFactory
      */
     private $getChatFactory;
@@ -79,7 +99,6 @@ final class MethodFactory
 
     public function __construct(
         ForwardMessageFactory $forwardMessageFactory,
-        DeleteMessageFactory $deleteMessageFactory,
         GetChatFactory $getChatFactory,
         GetMeFactory $getMeFactory,
         SendAnimationFactory $sendAnimationFactory,
@@ -90,10 +109,14 @@ final class MethodFactory
         SendPhotoFactory $sendPhotoFactory,
         SendVideoFactory $sendVideoFactory,
         SendVideoNoteFactory $sendVideoNoteFactory,
-        SendVoiceFactory $sendVoiceFactory
+        SendVoiceFactory $sendVoiceFactory,
+        DeleteMessageFactory $deleteMessageFactory,
+        EditMessageTextFactory $editMessageTextFactory,
+        EditMessageCaptionFactory $editMessageCaptionFactory,
+        EditMessageMediaFactory $editMessageMediaFactory,
+        EditMessageReplyMarkupFactory $editMessageReplyMarkupFactory
     ) {
         $this->forwardMessageFactory = $forwardMessageFactory;
-        $this->deleteMessageFactory = $deleteMessageFactory;
         $this->getChatFactory = $getChatFactory;
         $this->getMeFactory = $getMeFactory;
         $this->sendAnimationFactory = $sendAnimationFactory;
@@ -105,6 +128,12 @@ final class MethodFactory
         $this->sendVideoFactory = $sendVideoFactory;
         $this->sendVideoNoteFactory = $sendVideoNoteFactory;
         $this->sendVoiceFactory = $sendVoiceFactory;
+
+        $this->deleteMessageFactory = $deleteMessageFactory;
+        $this->editMessageTextFactory = $editMessageTextFactory;
+        $this->editMessageCaptionFactory = $editMessageCaptionFactory;
+        $this->editMessageMediaFactory = $editMessageMediaFactory;
+        $this->editMessageReplyMarkupFactory= $editMessageReplyMarkupFactory;
     }
 
     /**
@@ -124,15 +153,6 @@ final class MethodFactory
     public function createForwardMessage(array $parameters = [])
     {
         return $this->create($this->forwardMessageFactory, $parameters);
-    }
-
-    /**
-     * @param array $parameters
-     * @return DeleteMessageInterface
-     */
-    public function createDeleteMessage(array $parameters = [])
-    {
-        return $this->create($this->deleteMessageFactory, $parameters);
     }
 
     /**
@@ -232,5 +252,50 @@ final class MethodFactory
     public function createSendVoice(array $parameters = [])
     {
         return $this->create($this->sendVoiceFactory, $parameters);
+    }
+
+    /**
+     * @param array $parameters
+     * @return DeleteMessageInterface
+     */
+    public function createDeleteMessage(array $parameters = [])
+    {
+        return $this->create($this->deleteMessageFactory, $parameters);
+    }
+
+    /**
+     * @param array $parameters
+     * @return EditMessageTextInterface
+     */
+    public function createEditMessageText(array $parameters = [])
+    {
+        return $this->create($this->editMessageTextFactory, $parameters);
+    }
+
+    /**
+     * @param array $parameters
+     * @return EditMessageCaptionInterface
+     */
+    public function createEditMessageCaption(array $parameters = [])
+    {
+        return $this->create($this->editMessageCaptionFactory, $parameters);
+    }
+
+    /**
+     * @param array $parameters
+     * @return EditMessageMediaInterface
+     */
+    public function createEditMessageMedia(array $parameters = [])
+    {
+        return $this->create($this->editMessageMediaFactory, $parameters);
+    }
+
+    /**
+     * @param array $parameters
+     * @return EditMessageReplyMarkupInterface
+     */
+    public function createEditMessageReplyMarkup(array $parameters = [])
+    {
+        return $this->create($this->editMessageReplyMarkupFactory, $parameters);
     }
 }

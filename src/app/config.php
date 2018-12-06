@@ -42,6 +42,7 @@ return [
     Method\EditMessageTextInterface::class => autowire(Method\EditMessageText::class),
     Method\EditMessageCaptionInterface::class => autowire(Method\EditMessageCaption::class),
     Method\EditMessageMediaInterface::class => autowire(Method\EditMessageMedia::class),
+    Method\EditMessageReplyMarkupInterface::class => autowire(Method\EditMessageReplyMarkup::class),
 
     /** Updates */
     Command\UpdatesInterface::class => autowire(Command\Updates::class),

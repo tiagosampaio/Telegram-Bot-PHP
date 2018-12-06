@@ -18,7 +18,15 @@ class EditMessageText extends CommandAbstract implements EditMessageTextInterfac
         Parts\ReplyMarkup;
 
     /**
-     * @var string
+     * {@inheritdoc}
      */
     protected $urlPath = 'editMessageText';
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setText(string $text)
+    {
+        return $this->setData('text', (string) $text);
+    }
 }
