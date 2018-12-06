@@ -10,14 +10,8 @@ use Telegram\Command\CommandInterface;
  * Interface SendMessageInterface
  * @package Telegram\Command\Method
  */
-interface SendMessageInterface extends CommandInterface
+interface SendMessageInterface extends CommandInterface, Parts\ChatInterface
 {
-    /**
-     * @param string|int $chatId
-     * @return $this
-     */
-    public function setChatId($chatId);
-    
     /**
      * @param string $text
      * @return $this

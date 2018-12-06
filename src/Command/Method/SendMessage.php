@@ -12,19 +12,12 @@ use Telegram\Command\CommandAbstract;
  */
 class SendMessage extends CommandAbstract implements SendMessageInterface
 {
-    /**
-     * @var string
-     */
-    protected $urlPath = 'sendMessage';
-    
+    use Parts\Chat;
+
     /**
      * {@inheritdoc}
      */
-    public function setChatId($chatId)
-    {
-        $this->setData('chat_id', $chatId);
-        return $this;
-    }
+    protected $urlPath = 'sendMessage';
     
     /**
      * {@inheritdoc}
