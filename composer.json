@@ -35,8 +35,12 @@
     }
   },
   "scripts": {
+    "mkdir-phpunit": [
+      "mkdir -p ./temp/tests/phpunit/coverage"
+    ],
     "phpunit": [
-      "vendor/bin/phpunit -c dev/test/unit/phpunit.xml.dist dev/test/unit/"
+      "@mkdir-phpunit",
+      "vendor/bin/phpunit -c dev/test/unit/phpunit.xml.dist dev/test/unit/ --coverage-html temp/tests/phpunit/coverage"
     ],
     "phpcs": [
       "vendor/bin/phpcs --standard=PSR2 --severity=1 src"

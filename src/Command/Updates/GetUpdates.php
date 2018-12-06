@@ -49,7 +49,7 @@ class GetUpdates extends CommandAbstract implements GetUpdatesInterface
      */
     public function setAllowedUpdates(array $updates)
     {
-        $this->setData('updates', $updates);
+        $this->setData('allowed_updates', $updates);
         return $this;
     }
 }

@@ -30,7 +30,7 @@ abstract class CommandAbstract extends ObjectData implements CommandInterface
     /**
      * @var string
      */
-    protected $requestMethod = self::REQUEST_METHOD_GET;
+    protected $requestMethod = self::REQUEST_METHOD_POST;
 
     /**
      * @var array
