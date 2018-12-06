@@ -10,7 +10,7 @@ use Telegram\Command\CommandInterface;
  * Interface SendMessageInterface
  * @package Telegram\Command\Method
  */
-interface SendMessageInterface extends CommandInterface, Parts\ChatInterface
+interface SendMessageInterface extends CommandInterface, Parts\ChatInterface, Parts\ReplyMarkupInterface
 {
     /**
      * @param string $text
@@ -41,10 +41,4 @@ interface SendMessageInterface extends CommandInterface, Parts\ChatInterface
      * @return $this
      */
     public function setReplyToMessageId(int $messageId);
-
-    /**
-     * @param mixed $markup
-     * @return $this
-     */
-    public function setReplyMarkup($markup);
 }

@@ -10,7 +10,7 @@ use Telegram\Command\CommandInterface;
  * Interface SendPhotoInterface
  * @package Telegram\Command\Method
  */
-interface SendPhotoInterface extends CommandInterface, Parts\ChatInterface
+interface SendPhotoInterface extends CommandInterface, Parts\ChatInterface, Parts\ReplyMarkupInterface
 {
     /**
      * @param $photo
@@ -41,10 +41,4 @@ interface SendPhotoInterface extends CommandInterface, Parts\ChatInterface
      * @return $this
      */
     public function setReplyToMessageId(int $messageId);
-
-    /**
-     * @param $markup
-     * @return $this
-     */
-    public function setReplyMarkup($markup);
 }

@@ -14,20 +14,13 @@ class EditMessageCaption extends CommandAbstract implements EditMessageCaptionIn
 {
     use Parts\Chat,
         Parts\Message,
-        Parts\InlineMessage;
+        Parts\InlineMessage,
+        Parts\ReplyMarkup;
 
     /**
      * @var string
      */
     protected $urlPath = 'editMessageCaption';
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setReplyMarkup($replyMarkup)
-    {
-        return $this->setData('reply_markup', $replyMarkup);
-    }
 
     /**
      * {@inheritdoc}

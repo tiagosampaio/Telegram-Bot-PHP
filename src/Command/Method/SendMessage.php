@@ -12,7 +12,8 @@ use Telegram\Command\CommandAbstract;
  */
 class SendMessage extends CommandAbstract implements SendMessageInterface
 {
-    use Parts\Chat;
+    use Parts\Chat,
+        Parts\ReplyMarkup;
 
     /**
      * {@inheritdoc}
@@ -61,15 +62,6 @@ class SendMessage extends CommandAbstract implements SendMessageInterface
     public function setReplyToMessageId(int $messageId)
     {
         // TODO: Implement setReplyToMessageId() method.
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setReplyMarkup($markup)
-    {
-        // TODO: Implement setReplyMarkup() method.
         return $this;
     }
 }

@@ -12,7 +12,8 @@ use Telegram\Command\CommandMultipartAbstract;
  */
 class SendPhoto extends CommandMultipartAbstract implements SendPhotoInterface
 {
-    use Parts\Chat;
+    use Parts\Chat,
+        Parts\ReplyMarkup;
 
     /**
      * {@inheritdoc}
@@ -61,15 +62,6 @@ class SendPhoto extends CommandMultipartAbstract implements SendPhotoInterface
     public function setReplyToMessageId(int $messageId)
     {
         $this->setData('reply_to_message_id', (int) $messageId);
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setReplyMarkup($markup)
-    {
-        $this->setData('reply_markup', $markup);
         return $this;
     }
     

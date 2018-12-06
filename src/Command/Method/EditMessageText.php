@@ -14,18 +14,11 @@ class EditMessageText extends CommandAbstract implements EditMessageTextInterfac
 {
     use Parts\Chat,
         Parts\Message,
-        Parts\InlineMessage;
+        Parts\InlineMessage,
+        Parts\ReplyMarkup;
 
     /**
      * @var string
      */
     protected $urlPath = 'editMessageText';
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setReplyMarkup($replyMarkup)
-    {
-        return $this->setData('reply_markup', $replyMarkup);
-    }
 }

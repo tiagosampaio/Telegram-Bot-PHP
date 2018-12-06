@@ -8,7 +8,8 @@ namespace Telegram\Command\Method;
  * Interface EditMessageCaptionInterface
  * @package Telegram\Command\Method
  */
-interface EditMessageCaptionInterface extends Parts\ChatInterface, Parts\MessageInterface, Parts\InlineMessageInterface
+interface EditMessageCaptionInterface
+    extends Parts\ChatInterface, Parts\MessageInterface, Parts\InlineMessageInterface, Parts\ReplyMarkupInterface
 {
     /**
      * @param string $caption
@@ -21,10 +22,4 @@ interface EditMessageCaptionInterface extends Parts\ChatInterface, Parts\Message
      * @return $this
      */
     public function setParseMode($parseMode);
-
-    /**
-     * @param string $replyMarkup
-     * @return $this
-     */
-    public function setReplyMarkup($replyMarkup);
 }
