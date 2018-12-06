@@ -10,10 +10,11 @@ use Telegram\Command\CommandAbstract;
  * Class EditMessageText
  * @package Telegram\Command\Method
  */
-class EditMessageText extends CommandAbstract implements EditMessageInterface
+class EditMessageText extends CommandAbstract implements EditMessageTextInterface
 {
     use Parts\Chat,
-        Parts\Message;
+        Parts\Message,
+        Parts\InlineMessage;
 
     /**
      * @var string
@@ -23,16 +24,8 @@ class EditMessageText extends CommandAbstract implements EditMessageInterface
     /**
      * {@inheritdoc}
      */
-    public function setInlineMessageId($inlineMessageId)
-    {
-        // TODO: Implement setInlineMessageId() method.
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function setReplyMarkup($replyMarkup)
     {
-        // TODO: Implement setReplyMarkup() method.
+        return $this->setData('reply_markup', $replyMarkup);
     }
 }

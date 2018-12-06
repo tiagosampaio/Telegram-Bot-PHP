@@ -8,15 +8,8 @@ namespace Telegram\Command\Method;
  * Interface EditMessageTextInterface
  * @package Telegram\Command\Method
  */
-interface EditMessageTextInterface extends Parts\ChatInterface, Parts\MessageInterface
+interface EditMessageTextInterface extends Parts\ChatInterface, Parts\MessageInterface, Parts\InlineMessageInterface
 {
-    /**
-     * @param string $inlineMessageId
-     *
-     * @return $this
-     */
-    public function setInlineMessageId($inlineMessageId);
-
     /**
      * @param $replyMarkup
      *

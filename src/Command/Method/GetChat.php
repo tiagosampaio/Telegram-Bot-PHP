@@ -12,16 +12,10 @@ use Telegram\Command\CommandAbstract;
  */
 class GetChat extends CommandAbstract implements GetChatInterface
 {
+    use Parts\Chat;
+
     /**
      * @var string
      */
     protected $urlPath = 'getChat';
-    
-    /**
-     * {@inheritdoc}
-     */
-    public function setChatId(int $chatId)
-    {
-        return $this->setData('chat_id', $chatId);
-    }
 }
