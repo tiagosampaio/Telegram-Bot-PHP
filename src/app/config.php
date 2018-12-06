@@ -40,6 +40,8 @@ return [
     Method\ForwardMessageInterface::class => autowire(Method\ForwardMessage::class),
     Method\DeleteMessageInterface::class => autowire(Method\DeleteMessage::class),
     Method\EditMessageTextInterface::class => autowire(Method\EditMessageText::class),
+    Method\EditMessageCaptionInterface::class => autowire(Method\EditMessageCaption::class),
+    Method\EditMessageMediaInterface::class => autowire(Method\EditMessageMedia::class),
 
     /** Updates */
     Command\UpdatesInterface::class => autowire(Command\Updates::class),
