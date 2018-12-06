@@ -12,18 +12,12 @@ use Telegram\Command\CommandMultipartAbstract;
  */
 class SendAudio extends CommandMultipartAbstract implements SendAudioInterface
 {
-    /**
-     * @var string
-     */
-    protected $urlPath = 'sendAudio';
-    
+    use Parts\Chat;
+
     /**
      * {@inheritdoc}
      */
-    public function setChatId(int $chatId)
-    {
-        return $this->setData('chat_id', $chatId);
-    }
+    protected $urlPath = 'sendAudio';
     
     /**
      * {@inheritdoc}
@@ -34,7 +28,7 @@ class SendAudio extends CommandMultipartAbstract implements SendAudioInterface
     }
     
     /**
-     * @return string
+     * {@inheritdoc}
      */
     protected function getMultipartFileType()
     {

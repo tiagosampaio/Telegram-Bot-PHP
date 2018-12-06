@@ -10,15 +10,8 @@ use Telegram\Command\CommandInterface;
  * Interface SendAudioInterface
  * @package Telegram\Command\Method
  */
-interface SendAudioInterface extends CommandInterface
+interface SendAudioInterface extends CommandInterface, Parts\ChatInterface
 {
-    /**
-     * @param int $chatId
-     *
-     * @return $this
-     */
-    public function setChatId(int $chatId);
-    
     /**
      * @param mixed
      *
