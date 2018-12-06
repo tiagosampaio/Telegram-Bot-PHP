@@ -69,7 +69,7 @@ class ContainerRepository
         self::$config = array_merge(self::$config, $config);
         self::$instanceBuilder = new ContainerBuilder();
     
-        if (!empty(self::getDefinitions()) && file_exists(self::getDefinitions())) {
+        if (!empty(self::getDefinitions()) && realpath(self::getDefinitions())) {
             self::$instanceBuilder->addDefinitions(self::getDefinitions());
         }
         

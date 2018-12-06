@@ -88,7 +88,7 @@ abstract class CommandAbstract extends ObjectData implements CommandInterface
          * @var mixed  $value
          */
         foreach ($this->optionalConfig as $key => $value) {
-            if (is_null($key) || false === $key) {
+            if (null === $key || false === $key) {
                 continue;
             }
             

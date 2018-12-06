@@ -20,7 +20,8 @@ abstract class CommandMultipartAbstract extends CommandAbstract
     
         foreach (parent::toArray() as $key => $value) {
             if ($key == $this->getMultipartFileType()) {
-                $value = fopen($value, 'r');
+                // $value = fopen($value, 'r');
+                $value = file_get_contents($value);
             }
         
             $result[] = [

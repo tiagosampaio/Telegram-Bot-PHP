@@ -104,7 +104,7 @@ class Updates extends EntityAbstract implements UpdatesInterface, \Iterator
     {
         $key = key($this->data['updates']);
     
-        if (is_null($key) || false === $key) {
+        if (null === $key || false === $key) {
             return false;
         }
     
