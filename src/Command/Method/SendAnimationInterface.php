@@ -10,14 +10,8 @@ use Telegram\Command\CommandInterface;
  * Interface SendAnimationInterface
  * @package Telegram\Command\Method
  */
-interface SendAnimationInterface extends CommandInterface
+interface SendAnimationInterface extends CommandInterface, Parts\ChatInterface
 {
-    /**
-     * @param string|int $chatId
-     * @return $this
-     */
-    public function setChatId($chatId);
-
     /**
      * @param $animation
      * @return $this

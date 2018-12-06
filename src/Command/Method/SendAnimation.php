@@ -12,25 +12,15 @@ use Telegram\Command\CommandMultipartAbstract;
  */
 class SendAnimation extends CommandMultipartAbstract implements SendAnimationInterface
 {
+    use Parts\Chat;
+
     /**
-     * @var string
+     * {@inheritdoc}
      */
     protected $urlPath = 'sendAnimation';
     
     /**
-     * @param string|int $chatId
-     *
-     * @return $this
-     */
-    public function setChatId($chatId)
-    {
-        return $this->setData('chat_id', $chatId);
-    }
-    
-    /**
-     * @param $animation
-     *
-     * @return $this
+     * {@inheritdoc}
      */
     public function setAnimation($animation)
     {
@@ -38,7 +28,7 @@ class SendAnimation extends CommandMultipartAbstract implements SendAnimationInt
     }
     
     /**
-     * @return string
+     * {@inheritdoc}
      */
     protected function getMultipartFileType()
     {
