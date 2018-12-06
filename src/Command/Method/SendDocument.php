@@ -12,18 +12,12 @@ use Telegram\Command\CommandMultipartAbstract;
  */
 class SendDocument extends CommandMultipartAbstract implements SendDocumentInterface
 {
-    /**
-     * @var string
-     */
-    protected $urlPath = 'sendDocument';
-    
+    use Parts\Chat;
+
     /**
      * {@inheritdoc}
      */
-    public function setChatId(int $chatId)
-    {
-        return $this->setData('chat_id', $chatId);
-    }
+    protected $urlPath = 'sendDocument';
     
     /**
      * {@inheritdoc}
@@ -34,7 +28,7 @@ class SendDocument extends CommandMultipartAbstract implements SendDocumentInter
     }
     
     /**
-     * @return string
+     * {@inheritdoc}
      */
     protected function getMultipartFileType()
     {
