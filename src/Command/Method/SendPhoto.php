@@ -12,19 +12,12 @@ use Telegram\Command\CommandMultipartAbstract;
  */
 class SendPhoto extends CommandMultipartAbstract implements SendPhotoInterface
 {
-    /**
-     * @var string
-     */
-    protected $urlPath = 'sendPhoto';
+    use Parts\Chat;
 
     /**
      * {@inheritdoc}
      */
-    public function setChatId($chatId)
-    {
-        $this->setData('chat_id', $chatId);
-        return $this;
-    }
+    protected $urlPath = 'sendPhoto';
 
     /**
      * {@inheritdoc}
@@ -81,7 +74,7 @@ class SendPhoto extends CommandMultipartAbstract implements SendPhotoInterface
     }
     
     /**
-     * @return string
+     * {@inheritdoc}
      */
     protected function getMultipartFileType()
     {

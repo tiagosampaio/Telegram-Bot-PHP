@@ -10,14 +10,8 @@ use Telegram\Command\CommandInterface;
  * Interface SendPhotoInterface
  * @package Telegram\Command\Method
  */
-interface SendPhotoInterface extends CommandInterface
+interface SendPhotoInterface extends CommandInterface, Parts\ChatInterface
 {
-    /**
-     * @param string|int $chatId
-     * @return $this
-     */
-    public function setChatId($chatId);
-
     /**
      * @param $photo
      * @return $this
