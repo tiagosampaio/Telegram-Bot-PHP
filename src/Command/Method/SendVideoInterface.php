@@ -10,14 +10,8 @@ use Telegram\Command\CommandInterface;
  * Interface SendVideoInterface
  * @package Telegram\Command\Method
  */
-interface SendVideoInterface extends CommandInterface
+interface SendVideoInterface extends CommandInterface, Parts\ChatInterface
 {
-    /**
-     * @param string|int $chatId
-     * @return $this
-     */
-    public function setChatId($chatId);
-
     /**
      * @param $video
      * @return $this

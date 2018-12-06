@@ -12,19 +12,12 @@ use Telegram\Command\CommandMultipartAbstract;
  */
 class SendVideo extends CommandMultipartAbstract implements SendVideoInterface
 {
-    /**
-     * @var string
-     */
-    protected $urlPath = 'sendVideo';
+    use Parts\Chat;
 
     /**
      * {@inheritdoc}
      */
-    public function setChatId($chatId)
-    {
-        $this->setData('chat_id', $chatId);
-        return $this;
-    }
+    protected $urlPath = 'sendVideo';
 
     /**
      * {@inheritdoc}
@@ -36,7 +29,7 @@ class SendVideo extends CommandMultipartAbstract implements SendVideoInterface
     }
     
     /**
-     * @return string
+     * {@inheritdoc}
      */
     protected function getMultipartFileType()
     {
