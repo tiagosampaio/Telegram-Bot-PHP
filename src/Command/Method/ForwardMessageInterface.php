@@ -11,28 +11,14 @@ use Telegram\Command\CommandInterface;
  *
  * @package Telegram\Command\Method
  */
-interface ForwardMessageInterface extends CommandInterface
+interface ForwardMessageInterface extends CommandInterface, Parts\ChatInterface, Parts\MessageInterface
 {
     /**
      * @param int $chatId
      *
      * @return $this
      */
-    public function setChatId(int $chatId);
-    
-    /**
-     * @param int $chatId
-     *
-     * @return $this
-     */
     public function setFromChatId(int $chatId);
-    
-    /**
-     * @param int $messageId
-     *
-     * @return $this
-     */
-    public function setMessageId(int $messageId);
     
     /**
      * @param boolean $flag

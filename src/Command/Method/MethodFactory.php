@@ -18,6 +18,11 @@ final class MethodFactory
     private $forwardMessageFactory;
 
     /**
+     * @var DeleteMessageFactory
+     */
+    private $deleteMessageFactory;
+
+    /**
      * @var GetChatFactory
      */
     private $getChatFactory;
@@ -74,6 +79,7 @@ final class MethodFactory
 
     public function __construct(
         ForwardMessageFactory $forwardMessageFactory,
+        DeleteMessageFactory $deleteMessageFactory,
         GetChatFactory $getChatFactory,
         GetMeFactory $getMeFactory,
         SendAnimationFactory $sendAnimationFactory,
@@ -87,6 +93,7 @@ final class MethodFactory
         SendVoiceFactory $sendVoiceFactory
     ) {
         $this->forwardMessageFactory = $forwardMessageFactory;
+        $this->deleteMessageFactory = $deleteMessageFactory;
         $this->getChatFactory = $getChatFactory;
         $this->getMeFactory = $getMeFactory;
         $this->sendAnimationFactory = $sendAnimationFactory;
@@ -117,6 +124,15 @@ final class MethodFactory
     public function createForwardMessage(array $parameters = [])
     {
         return $this->create($this->forwardMessageFactory, $parameters);
+    }
+
+    /**
+     * @param array $parameters
+     * @return DeleteMessageInterface
+     */
+    public function createDeleteMessage(array $parameters = [])
+    {
+        return $this->create($this->deleteMessageFactory, $parameters);
     }
 
     /**

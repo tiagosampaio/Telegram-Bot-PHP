@@ -13,6 +13,9 @@ use Telegram\Command\CommandAbstract;
  */
 class ForwardMessage extends CommandAbstract implements ForwardMessageInterface
 {
+    use Parts\Chat,
+        Parts\Message;
+
     /**
      * @var string
      */
@@ -21,27 +24,9 @@ class ForwardMessage extends CommandAbstract implements ForwardMessageInterface
     /**
      * {@inheritdoc}
      */
-    public function setChatId(int $chatId)
-    {
-        $this->setData('chat_id', $chatId);
-        return $this;
-    }
-    
-    /**
-     * {@inheritdoc}
-     */
     public function setFromChatId(int $chatId)
     {
         $this->setData('from_chat_id', $chatId);
-        return $this;
-    }
-    
-    /**
-     * {@inheritdoc}
-     */
-    public function setMessageId(int $messageId)
-    {
-        $this->setData('message_id', $messageId);
         return $this;
     }
     

@@ -38,7 +38,9 @@ return [
     Method\SendVideoNoteInterface::class => autowire(Method\SendVideoNote::class),
     Method\SendContactInterface::class => autowire(Method\SendContact::class),
     Method\ForwardMessageInterface::class => autowire(Method\ForwardMessage::class),
-    
+    Method\DeleteMessageInterface::class => autowire(Method\DeleteMessage::class),
+    Method\EditMessageTextInterface::class => autowire(Method\EditMessageText::class),
+
     /** Updates */
     Command\UpdatesInterface::class => autowire(Command\Updates::class),
     Command\MethodInterface::class => autowire(Command\Method::class),

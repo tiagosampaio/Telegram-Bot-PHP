@@ -465,6 +465,11 @@ class Method implements MethodInterface
      */
     public function deleteMessage($chatId, $messageId)
     {
-        /** @todo: Implement this method. */
+        /** @var Method\DeleteMessageInterface $method */
+        $method = $this->methodFactory->createDeleteMessage()
+            ->setChatId($chatId)
+            ->setMessageId($messageId);
+
+        return $this->post($method);
     }
 }
