@@ -13,7 +13,8 @@ use Telegram\Command\CommandMultipartAbstract;
 class SendPhoto extends CommandMultipartAbstract implements SendPhotoInterface
 {
     use Parts\Chat,
-        Parts\ReplyMarkup;
+        Parts\ReplyMarkup,
+        Parts\ReplyToMessage;
 
     /**
      * {@inheritdoc}
@@ -53,15 +54,6 @@ class SendPhoto extends CommandMultipartAbstract implements SendPhotoInterface
     public function setDisableNotification(bool $flat)
     {
         $this->setData('disable_notification', (bool) $flat);
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setReplyToMessageId(int $messageId)
-    {
-        $this->setData('reply_to_message_id', (int) $messageId);
         return $this;
     }
     

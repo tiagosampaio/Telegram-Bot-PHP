@@ -5,12 +5,15 @@ declare(strict_types = 1);
 namespace Telegram\Command\Method;
 
 use Telegram\Command\CommandInterface;
+use Telegram\Command\Method\Parts\ChatInterface;
+use Telegram\Command\Method\Parts\ReplyMarkupInterface;
+use Telegram\Command\Method\Parts\ReplyToMessageInterface;
 
 /**
  * Interface SendPhotoInterface
  * @package Telegram\Command\Method
  */
-interface SendPhotoInterface extends CommandInterface, Parts\ChatInterface, Parts\ReplyMarkupInterface
+interface SendPhotoInterface extends CommandInterface, ChatInterface, ReplyMarkupInterface, ReplyToMessageInterface
 {
     /**
      * @param $photo
@@ -35,10 +38,4 @@ interface SendPhotoInterface extends CommandInterface, Parts\ChatInterface, Part
      * @return $this
      */
     public function setDisableNotification(bool $flat);
-
-    /**
-     * @param int $messageId
-     * @return $this
-     */
-    public function setReplyToMessageId(int $messageId);
 }

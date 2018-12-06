@@ -13,7 +13,8 @@ use Telegram\Command\CommandAbstract;
 class SendMessage extends CommandAbstract implements SendMessageInterface
 {
     use Parts\Chat,
-        Parts\ReplyMarkup;
+        Parts\ReplyMarkup,
+        Parts\ReplyToMessage;
 
     /**
      * {@inheritdoc}
@@ -53,15 +54,6 @@ class SendMessage extends CommandAbstract implements SendMessageInterface
     public function setDisableNotification(bool $flag)
     {
         // TODO: Implement setDisableNotification() method.
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setReplyToMessageId(int $messageId)
-    {
-        // TODO: Implement setReplyToMessageId() method.
         return $this;
     }
 }
