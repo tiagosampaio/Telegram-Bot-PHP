@@ -120,17 +120,6 @@ class Connection implements ConnectionInterface
 
         return $this->makeRequest($method, $uri, $options);
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function multipart($method, $resourcePath, array $data = [], array $config = [])
-    {
-        $uri = $this->buildUri($resourcePath, $config);
-        $options = $data;
-
-        return $this->makeRequest($method, $uri, $options);
-    }
     
     /**
      * @param string $method

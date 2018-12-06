@@ -43,15 +43,6 @@ interface ConnectionInterface
     public function request($method, $resourcePath, array $data = [], array $config = []);
 
     /**
-     * @param string $method
-     * @param string $resourcePath
-     * @param array  $data
-     * @param array  $config
-     * @return Response\ResponseInterface
-     */
-    public function multipart($method, $resourcePath, array $data = [], array $config = []);
-
-    /**
      * @param string $resourcePath
      * @param array  $data
      * @param array  $config
