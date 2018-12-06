@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace Telegram\Command;
 
+use Telegram\Service;
 use Telegram\ObjectType\Entity;
 
 /**
@@ -19,97 +20,34 @@ class Method implements MethodInterface
      * @var \Telegram\Service\ConnectionInterface
      */
     private $connection;
-    
+
     /**
-     * @var Method\SendMessageFactory
+     * @var Entity\EntityFactory
      */
-    private $sendMessageFactory;
-    
+    private $objectEntityFactory;
+
     /**
-     * @var Method\GetMeFactory
+     * @var Method\MethodFactory
      */
-    private $getMeFactory;
-    
+    private $methodFactory;
+
     /**
-     * @var Method\GetChatFactory
+     * Method constructor.
+     * @param Service\ConnectionInterface $connection
+     * @param Service\ResultFactory       $resultFactory
+     * @param Entity\EntityFactory        $objectEntityFactory
+     * @param Method\MethodFactory        $methodFactory
      */
-    private $getChatFactory;
-    
-    /**
-     * @var Method\SendPhotoFactory
-     */
-    private $sendPhotoFactory;
-    
-    /**
-     * @var Method\SendVideoFactory
-     */
-    private $sendVideoFactory;
-    
-    /**
-     * @var Method\SendAudioFactory
-     */
-    private $sendAudioFactory;
-    
-    /**
-     * @var Method\SendDocumentFactory
-     */
-    private $sendDocumentFactory;
-    
-    /**
-     * @var Method\SendAnimationFactory
-     */
-    private $sendAnimationFactory;
-    
-    /**
-     * @var Method\SendVoiceFactory
-     */
-    private $sendVoiceFactory;
-    
-    /**
-     * @var Method\SendVideoNoteFactory
-     */
-    private $sendVideoNoteFactory;
-    
-    /**
-     * @var Method\SendContactFactory
-     */
-    private $sendContactFactory;
-    
-    /**
-     * @var Method\SendVideoFactory
-     */
-    private $forwardMessageFactory;
-    
     public function __construct(
-        \Telegram\Service\ConnectionInterface $connection,
-        \Telegram\Service\ResultFactory $resultFactory,
-        Method\SendMessageFactory $sendMessageFactory,
-        Method\GetMeFactory $getMeFactory,
-        Method\GetChatFactory $getChatFactory,
-        Method\SendPhotoFactory $sendPhotoFactory,
-        Method\SendVideoFactory $sendVideoFactory,
-        Method\SendAudioFactory $sendAudioFactory,
-        Method\SendDocumentFactory $sendDocumentFactory,
-        Method\SendAnimationFactory $sendAnimationFactory,
-        Method\SendVoiceFactory $sendVoiceFactory,
-        Method\SendVideoNoteFactory $sendVideoNoteFactory,
-        Method\SendContactFactory $sendContactFactory,
-        Method\ForwardMessageFactory $forwardMessageFactory
+        Service\ConnectionInterface $connection,
+        Service\ResultFactory $resultFactory,
+        Entity\EntityFactory $objectEntityFactory,
+        Method\MethodFactory $methodFactory
     ) {
         $this->connection = $connection;
         $this->resultFactory = $resultFactory;
-        $this->sendMessageFactory = $sendMessageFactory;
-        $this->getMeFactory = $getMeFactory;
-        $this->getChatFactory = $getChatFactory;
-        $this->sendPhotoFactory = $sendPhotoFactory;
-        $this->sendVideoFactory = $sendVideoFactory;
-        $this->sendAudioFactory = $sendAudioFactory;
-        $this->sendDocumentFactory = $sendDocumentFactory;
-        $this->sendAnimationFactory = $sendAnimationFactory;
-        $this->sendVoiceFactory = $sendVoiceFactory;
-        $this->sendVideoNoteFactory = $sendVideoNoteFactory;
-        $this->sendContactFactory = $sendContactFactory;
-        $this->forwardMessageFactory = $forwardMessageFactory;
+        $this->objectEntityFactory = $objectEntityFactory;
+        $this->methodFactory = $methodFactory;
     }
     
     /**
@@ -117,9 +55,7 @@ class Method implements MethodInterface
      */
     public function getMe()
     {
-        /** @var Method\GetMeInterface $method */
-        $method = $this->getMeFactory->create();
-        return $this->post($method, Entity\GetMeInterface::class);
+        return $this->post($this->methodFactory->createGetMe(), Entity\GetMeInterface::class);
     }
     
     /**
@@ -128,8 +64,8 @@ class Method implements MethodInterface
     public function sendMessage($chatId, string $text, array $optionalConfig = [])
     {
         /** @var Method\SendMessageInterface $method */
-        $method = $this->sendMessageFactory->create();
-        $method->setChatId($chatId)
+        $method = $this->methodFactory->createSendMessage()
+            ->setChatId($chatId)
             ->setText($text)
             ->setOptionalConfig($optionalConfig);
         
@@ -142,8 +78,8 @@ class Method implements MethodInterface
     public function forwardMessage($chatId, $fromChatId, $messageId, bool $disableNotification = false)
     {
         /** @var Method\ForwardMessageInterface $method */
-        $method = $this->forwardMessageFactory->create();
-        $method->setChatId($chatId)
+        $method = $this->methodFactory->createForwardMessage()
+            ->setChatId($chatId)
             ->setFromChatId($fromChatId)
             ->setMessageId($messageId)
             ->setDisableNotification((bool) $disableNotification);
@@ -157,8 +93,8 @@ class Method implements MethodInterface
     public function sendPhoto($chatId, $photo, array $optionalConfig = [])
     {
         /** @var Method\SendPhotoInterface $method */
-        $method = $this->sendPhotoFactory->create();
-        $method->setChatId($chatId)
+        $method = $this->methodFactory->createSendPhoto()
+            ->setChatId($chatId)
             ->setPhoto($photo)
             ->setOptionalConfig($optionalConfig);
         
@@ -171,8 +107,8 @@ class Method implements MethodInterface
     public function sendAudio($chatId, $audio, array $optionalConfig = [])
     {
         /** @var Method\SendAudioInterface $method */
-        $method = $this->sendAudioFactory->create();
-        $method->setChatId($chatId)
+        $method = $this->methodFactory->createSendAudio()
+            ->setChatId($chatId)
             ->setAudio($audio)
             ->setOptionalConfig($optionalConfig);
     
@@ -185,8 +121,8 @@ class Method implements MethodInterface
     public function sendDocument($chatId, $document, array $optionalConfig = [])
     {
         /** @var Method\SendDocumentInterface $method */
-        $method = $this->sendDocumentFactory->create();
-        $method->setChatId($chatId)
+        $method = $this->methodFactory->createSendDocument()
+            ->setChatId($chatId)
             ->setDocument($document)
             ->setOptionalConfig($optionalConfig);
     
@@ -199,8 +135,8 @@ class Method implements MethodInterface
     public function sendVideo($chatId, $video, array $optionalConfig = [])
     {
         /** @var Method\SendVideoInterface $method */
-        $method = $this->sendVideoFactory->create();
-        $method->setChatId($chatId)
+        $method = $this->methodFactory->createSendVideo()
+            ->setChatId($chatId)
             ->setVideo($video)
             ->setOptionalConfig($optionalConfig);
         
@@ -213,8 +149,8 @@ class Method implements MethodInterface
     public function sendAnimation($chatId, $animation, array $optionalConfig = [])
     {
         /** @var Method\SendAnimationInterface $method */
-        $method = $this->sendAnimationFactory->create();
-        $method->setChatId($chatId)
+        $method = $this->methodFactory->createSendAnimation()
+            ->setChatId($chatId)
             ->setAnimation($animation)
             ->setOptionalConfig($optionalConfig);
     
@@ -227,8 +163,8 @@ class Method implements MethodInterface
     public function sendVoice($chatId, $voice, array $optionalConfig = [])
     {
         /** @var Method\SendVoiceInterface $method */
-        $method = $this->sendVoiceFactory->create();
-        $method->setChatId($chatId)
+        $method = $this->methodFactory->createSendVoice()
+            ->setChatId($chatId)
             ->setVoice($voice)
             ->setOptionalConfig($optionalConfig);
     
@@ -241,8 +177,8 @@ class Method implements MethodInterface
     public function sendVideoNote($chatId, $videoNote, array $optionalConfig = [])
     {
         /** @var Method\SendVideoNoteInterface $method */
-        $method = $this->sendVideoNoteFactory->create();
-        $method->setChatId($chatId)
+        $method = $this->methodFactory->createSendVideoNote()
+            ->setChatId($chatId)
             ->setVideoNote($videoNote)
             ->setOptionalConfig($optionalConfig);
     
@@ -295,8 +231,8 @@ class Method implements MethodInterface
     public function sendContact($chatId, $phone, $firstname, array $optionalConfig = [])
     {
         /** @var Method\SendContactInterface $method */
-        $method = $this->sendContactFactory->create();
-        $method->setChatId($chatId)
+        $method = $this->methodFactory->createSendContact()
+            ->setChatId($chatId)
             ->setPhoneNumber($phone)
             ->setFirstName($firstname)
             ->setOptionalConfig($optionalConfig);
@@ -438,8 +374,8 @@ class Method implements MethodInterface
     public function getChat($chatId)
     {
         /** @var Method\GetChatInterface $method */
-        $method = $this->getChatFactory->create();
-        $method->setChatId($chatId);
+        $method = $this->methodFactory->createGetChat()
+            ->setChatId($chatId);
     
         return $this->post($method, Entity\ChatInterface::class);
     }
