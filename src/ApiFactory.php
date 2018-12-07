@@ -26,14 +26,25 @@ class ApiFactory
     ];
     
     /**
+     * @var array
+     */
+    private static $customConfig = [];
+
+    /**
      * @param string $token
+     * @param array  $config
      *
      * @return ApiInterface
      * @throws \DI\DependencyException
      * @throws \DI\NotFoundException
      */
-    public static function create(string $token)
+    public static function create(string $token, array $config = [])
     {
+        if (!empty($config)) {
+            /** If there's a customized configuration the application can load it. */
+            self::$customConfig = (array) $config;
+        }
+
         self::setupContainer();
         
         $api = self::createApiInstance($token);
@@ -64,6 +75,17 @@ class ApiFactory
      */
     private static function setupContainer()
     {
-        self::$container = ContainerRepository::getInstance(self::$config);
+        self::$container = ContainerRepository::getInstance(self::getConfig());
+    }
+    
+    /**
+     * @param array $customConfig
+     *
+     * @return array
+     */
+    private static function getConfig()
+    {
+        $config = array_merge_recursive(self::$config, self::$customConfig);
+        return $config;
     }
 }
