@@ -20,7 +20,7 @@ class MessageEntity extends EntityAbstract implements MessageEntityInterface
     public function __construct(
         \Telegram\Framework\Data\SerializerInterface $serializer,
         UserFactory $userFactory,
-        array $data
+        array $data = []
     ) {
         parent::__construct($serializer, $data);
         
@@ -31,6 +31,10 @@ class MessageEntity extends EntityAbstract implements MessageEntityInterface
     
     private function init()
     {
+        if (!$this->canInitialize()) {
+            return;
+        }
+        
         if ($this->hasData(self::FIELD_USER)) {
             $this->setData(self::FIELD_USER, $this->userFactory->create(['data' => $this->getUser()]));
         }

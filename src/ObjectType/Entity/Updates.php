@@ -27,7 +27,7 @@ class Updates extends EntityAbstract implements UpdatesInterface, \Iterator
     public function __construct(
         UpdateFactory $updateFactory,
         \Telegram\Framework\Data\SerializerInterface $serializer,
-        array $data
+        array $data = []
     ) {
         parent::__construct($serializer, ['updates' => (array) $data]);
         
@@ -35,17 +35,16 @@ class Updates extends EntityAbstract implements UpdatesInterface, \Iterator
         $this->init();
     }
     
-    /**
-     * @return mixed
-     */
     private function init()
     {
+        if (!$this->canInitialize()) {
+            return;
+        }
+        
         /** @var array $update */
         foreach ($this->data['updates'] as $key => $update) {
             $this->data['updates'][$key] = $this->updateFactory->create(['data' => $update]);
         }
-    
-        return $this->data;
     }
     
     /**

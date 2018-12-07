@@ -37,4 +37,12 @@ abstract class EntityAbstract extends ObjectData implements EntityInterface
     {
         return $this->serializer->serialize($this->data);
     }
+    
+    /**
+     * @return bool
+     */
+    protected function canInitialize()
+    {
+        return (bool) !empty($this->data);
+    }
 }

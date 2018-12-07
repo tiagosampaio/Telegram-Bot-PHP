@@ -27,7 +27,7 @@ class Update extends EntityAbstract implements UpdateInterface
     public function __construct(
         \Telegram\Framework\Data\SerializerInterface $serializer,
         MessageFactory $messageFactory,
-        array $data
+        array $data = []
     ) {
         parent::__construct($serializer, $data);
         $this->messageFactory = $messageFactory;
@@ -36,6 +36,10 @@ class Update extends EntityAbstract implements UpdateInterface
     
     private function init()
     {
+        if (!$this->canInitialize()) {
+            return;
+        }
+        
         $this->setData('message', $this->messageFactory->create(['data' => $this->data['message']]));
     }
     

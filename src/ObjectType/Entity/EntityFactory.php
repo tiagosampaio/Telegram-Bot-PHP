@@ -138,7 +138,7 @@ final class EntityFactory
      * @param array $parameters
      * @return UpdateInterface
      */
-    public function createUpdateEntity(array $parameters = [])
+    public function createUpdate(array $parameters = [])
     {
         return $this->create($this->updateFactory, $parameters);
     }
@@ -147,7 +147,7 @@ final class EntityFactory
      * @param array $parameters
      * @return UpdatesInterface
      */
-    public function createUpdatesEntity(array $parameters = [])
+    public function createUpdates(array $parameters = [])
     {
         return $this->create($this->updatesFactory, $parameters);
     }
@@ -156,7 +156,7 @@ final class EntityFactory
      * @param array $parameters
      * @return UserInterface
      */
-    public function createUserEntity(array $parameters = [])
+    public function createUser(array $parameters = [])
     {
         return $this->create($this->userFactory, $parameters);
     }

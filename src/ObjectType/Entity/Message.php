@@ -12,7 +12,6 @@ use Telegram\ObjectType\EntityAbstract;
  */
 class Message extends EntityAbstract implements MessageInterface
 {
-
     /**
      * @var string
      */
@@ -44,7 +43,7 @@ class Message extends EntityAbstract implements MessageInterface
         MessageFactory $messageFactory,
         UserFactory $userFactory,
         ChatFactory $chatFactory,
-        array $data
+        array $data = []
     ) {
         parent::__construct($serializer, $data);
         
@@ -58,6 +57,10 @@ class Message extends EntityAbstract implements MessageInterface
     
     private function init()
     {
+        if (!$this->canInitialize()) {
+            return;
+        }
+        
         $this->setData(self::FIELD_FROM, $this->userFactory->create(['data' => $this->getFrom()]));
         $this->setData(self::FIELD_CHAT, $this->chatFactory->create(['data' => $this->getChat()]));
         

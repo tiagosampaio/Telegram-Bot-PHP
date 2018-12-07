@@ -10,7 +10,6 @@ namespace Telegram\ObjectType\Entity;
  */
 interface MessageInterface
 {
-
     /**
      * @var string
      */
