@@ -15,7 +15,7 @@ use TelegramTest\TestCase;
 class UserTest extends TestCase
 {
     /**
-     * @var Entity\User
+     * @var Entity\UserInterface
      */
     private $object;
     

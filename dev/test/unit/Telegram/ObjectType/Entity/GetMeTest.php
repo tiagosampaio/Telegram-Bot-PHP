@@ -15,19 +15,24 @@ use TelegramTest\TestCase;
 class GetMeTest extends TestCase
 {
     /**
-     * @var Entity\GetMe
+     * @var Entity\GetMeInterface
      */
     private $object;
+    
+    /**
+     * @var array
+     */
+    private $data = [
+        Entity\GetMeInterface::FIELD_ID => 12345,
+        Entity\GetMeInterface::FIELD_IS_BOT => true,
+        Entity\GetMeInterface::FIELD_FIRST_NAME => 'Telegram',
+        Entity\GetMeInterface::FIELD_USERNAME => 'telegrambot',
+    ];
     
     protected function setUp()
     {
         $parameters = [
-            'data' => [
-                Entity\GetMeInterface::FIELD_ID => 12345,
-                Entity\GetMeInterface::FIELD_IS_BOT => true,
-                Entity\GetMeInterface::FIELD_FIRST_NAME => 'Telegram',
-                Entity\GetMeInterface::FIELD_USERNAME => 'telegrambot',
-            ]
+            'data' => $this->data
         ];
         
         $this->object = $this->createObject(Entity\GetMeInterface::class, $parameters);
@@ -38,14 +43,15 @@ class GetMeTest extends TestCase
      */
     public function export()
     {
-        $data = [
-            'id' => 12345,
-            'is_bot' => true,
-            'first_name' => 'Telegram',
-            'username' => 'telegrambot',
-        ];
-        
-        $this->assertEquals($data, $this->object->export());
+        $this->assertEquals($this->data, $this->object->export());
+    }
+    
+    /**
+     * @test
+     */
+    public function serialize()
+    {
+        $this->assertEquals(json_encode($this->data), (string) $this->object);
     }
     
     /**
@@ -53,7 +59,7 @@ class GetMeTest extends TestCase
      */
     public function getId()
     {
-        $this->assertEquals(12345, $this->object->getId());
+        $this->assertEquals($this->data[Entity\GetMeInterface::FIELD_ID], $this->object->getId());
     }
     
     /**
@@ -61,7 +67,7 @@ class GetMeTest extends TestCase
      */
     public function getIsBot()
     {
-        $this->assertEquals(true, $this->object->getIsBot());
+        $this->assertEquals($this->data[Entity\GetMeInterface::FIELD_IS_BOT], $this->object->getIsBot());
     }
     
     /**
@@ -69,7 +75,7 @@ class GetMeTest extends TestCase
      */
     public function getFirstName()
     {
-        $this->assertEquals('Telegram', $this->object->getFirstName());
+        $this->assertEquals($this->data[Entity\GetMeInterface::FIELD_FIRST_NAME], $this->object->getFirstName());
     }
     
     /**
@@ -77,6 +83,6 @@ class GetMeTest extends TestCase
      */
     public function getUsername()
     {
-        $this->assertEquals('telegrambot', $this->object->getUsername());
+        $this->assertEquals($this->data[Entity\GetMeInterface::FIELD_USERNAME], $this->object->getUsername());
     }
 }
