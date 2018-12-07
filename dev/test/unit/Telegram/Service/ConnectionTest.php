@@ -143,7 +143,7 @@ class ConnectionTest extends TestCase
     {
         $config = ['type' => 'value'];
 
-        $this->mockFailingClientFactory();
+        $this->mockExceptionClientFactory();
         $result = $this->connection->request('POST', 'GetMe', [], $config);
         $this->assertInstanceOf(ResponseExceptionInterface::class, $result);
     }

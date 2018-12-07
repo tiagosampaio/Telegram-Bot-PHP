@@ -76,4 +76,13 @@ class ResultTest extends TestCase
         
         $this->assertEquals($result, $this->object->parse());
     }
+    
+    /**
+     * @test
+     */
+    public function failParse()
+    {
+        $this->response->expects($this->once())->method('canParse')->willReturn(false);
+        $this->assertEquals(false, $this->object->parse());
+    }
 }
