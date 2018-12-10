@@ -1,7 +1,13 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Telegram\Framework\Data;
 
+/**
+ * Interface SerializerInterface
+ * @package Telegram\Framework\Data
+ */
 interface SerializerInterface
 {
 
