@@ -60,7 +60,7 @@ return [
     
     /** Framework Objects */
     Framework\Data\SerializerInterface::class => autowire(Framework\Data\Serializer::class),
-    Framework\Data\ObjectDataInterface::class => autowire(Framework\Data\ObjectData::class),
+    Framework\Data\DataObjectInterface::class => autowire(Framework\Data\DataObject::class),
     
     /** Other Objects */
     \GuzzleHttp\ClientInterface::class => autowire(\GuzzleHttp\Client::class),

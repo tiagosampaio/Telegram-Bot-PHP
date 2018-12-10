@@ -2,13 +2,13 @@
 
 namespace TelegramTest\Framework\Data;
 
-use Telegram\Framework\Data\ObjectData;
+use Telegram\Framework\Data\DataObject;
 
 /**
- * Class ObjectDataTest
+ * Class DataObjectTest
  * @package TelegramTest\Telegram\Framework\Data
  */
-class ObjectDataTest extends \PHPUnit\Framework\TestCase
+class DataObjectTest extends \PHPUnit\Framework\TestCase
 {
 
     /**
@@ -19,8 +19,8 @@ class ObjectDataTest extends \PHPUnit\Framework\TestCase
         $key    = 'first_name';
         $value  = 'John Doe';
     
-        $object = new ObjectData();
-        $this->assertInstanceOf(ObjectData::class, $object->setData($key, $value));
+        $object = new DataObject();
+        $this->assertInstanceOf(DataObject::class, $object->setData($key, $value));
         $this->assertEquals($value, $object->getData($key));
     }
 
@@ -36,8 +36,8 @@ class ObjectDataTest extends \PHPUnit\Framework\TestCase
             $key => $value
         ];
     
-        $object = new ObjectData();
-        $this->assertInstanceOf(ObjectData::class, $object->setData($data));
+        $object = new DataObject();
+        $this->assertInstanceOf(DataObject::class, $object->setData($data));
         $this->assertEquals($value, $object->getData($key));
     }
 
@@ -46,12 +46,12 @@ class ObjectDataTest extends \PHPUnit\Framework\TestCase
      */
     public function addData()
     {
-        $object = new ObjectData();
+        $object = new DataObject();
         
-        $this->assertInstanceOf(ObjectData::class, $object->setData(['first_name' => 'John']));
+        $this->assertInstanceOf(DataObject::class, $object->setData(['first_name' => 'John']));
         $this->assertEquals('John', $object->getData('first_name'));
     
-        $this->assertInstanceOf(ObjectData::class, $object->addData(['last_name' => 'Doe']));
+        $this->assertInstanceOf(DataObject::class, $object->addData(['last_name' => 'Doe']));
         $this->assertEquals('Doe', $object->getData('last_name'));
     }
 
@@ -65,7 +65,7 @@ class ObjectDataTest extends \PHPUnit\Framework\TestCase
             'last_name' => 'Doe',
         ];
         
-        $object = new ObjectData();
+        $object = new DataObject();
         $object->setData($data);
         
         $this->assertEquals($data, $object->export());
@@ -82,7 +82,7 @@ class ObjectDataTest extends \PHPUnit\Framework\TestCase
             'last_name' => 'Doe',
         ];
 
-        $object = new ObjectData();
+        $object = new DataObject();
         $object->setData($data);
 
         $this->assertEquals($data, $object->debug());

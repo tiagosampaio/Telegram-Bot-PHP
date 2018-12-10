@@ -5,17 +5,22 @@ declare(strict_types = 1);
 namespace Telegram\Framework\Data;
 
 /**
- * Interface ObjectDataInterface
+ * Interface DataObjectInterface
  * @package Telegram\Framework\Data
  */
-interface ObjectDataInterface
+interface DataObjectInterface
 {
-    
     /**
      * @param string $key
      * @return mixed
      */
-    public function getData(string $key = null);
+    public function getData($key = null);
+    
+    /**
+     * @param string $key
+     * @return boolean
+     */
+    public function hasData($key);
     
     /**
      * @param string $key
@@ -23,6 +28,12 @@ interface ObjectDataInterface
      * @return $this
      */
     public function setData($key, $value = null);
+    
+    /**
+     * @param null|string $key
+     * @return $this
+     */
+    public function unsetData($key = null);
     
     /**
      * @param array $data

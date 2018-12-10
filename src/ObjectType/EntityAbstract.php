@@ -2,14 +2,14 @@
 
 namespace Telegram\ObjectType;
 
-use Telegram\Framework\Data\ObjectData;
+use Telegram\Framework\Data\DataObject;
 
 /**
  * Class EntityAbstract
  *
  * @package Telegram\ObjectType
  */
-abstract class EntityAbstract extends ObjectData implements EntityInterface
+abstract class EntityAbstract extends DataObject implements EntityInterface
 {
     /**
      * @var \Telegram\Framework\Data\SerializerInterface

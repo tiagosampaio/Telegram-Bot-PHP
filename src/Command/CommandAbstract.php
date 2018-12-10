@@ -4,13 +4,13 @@ declare(strict_types = 1);
 
 namespace Telegram\Command;
 
-use Telegram\Framework\Data\ObjectData;
+use Telegram\Framework\Data\DataObject;
 
 /**
  * Class MethodAbstract
  * @package Telegram\Command
  */
-abstract class CommandAbstract extends ObjectData implements CommandInterface
+abstract class CommandAbstract extends DataObject implements CommandInterface
 {
     /**
      * @var string

@@ -5,10 +5,10 @@ declare(strict_types = 1);
 namespace Telegram\Framework\Data;
 
 /**
- * Class ObjectData
+ * Class DataObject
  * @package Telegram\Framework\Data
  */
-class ObjectData implements ObjectDataInterface, \ArrayAccess
+class DataObject implements DataObjectInterface, \ArrayAccess
 {
     /**
      * @var array
@@ -16,7 +16,7 @@ class ObjectData implements ObjectDataInterface, \ArrayAccess
     protected $data = [];
     
     /**
-     * ObjectData constructor.
+     * DataObject constructor.
      *
      * @param array $data
      */
@@ -28,7 +28,7 @@ class ObjectData implements ObjectDataInterface, \ArrayAccess
     /**
      * {@inheritdoc}
      */
-    public function getData(string $key = null)
+    public function getData($key = null)
     {
         if (is_array($key)) {
             return $this->data;
@@ -60,6 +60,30 @@ class ObjectData implements ObjectDataInterface, \ArrayAccess
     /**
      * {@inheritdoc}
      */
+    public function unsetData($key = null)
+    {
+        if (null === $key) {
+            $this->setData([]);
+        }
+        
+        if (is_string($key)) {
+            if (isset($this->data[$key]) || array_key_exists($key, $this->data)) {
+                unset($this->data[$key]);
+            }
+        }
+        
+        if (is_array($key)) {
+            foreach ($key as $element) {
+                $this->unsetData($element);
+            }
+        }
+        
+        return $this;
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
     public function addData(array $data = [])
     {
         foreach ($data as $key => $value) {
@@ -74,11 +98,9 @@ class ObjectData implements ObjectDataInterface, \ArrayAccess
     }
     
     /**
-     * @param string $key
-     *
-     * @return bool
+     * {@inheritdoc}
      */
-    public function hasData(string $key)
+    public function hasData($key)
     {
         return (bool) isset($this->data[$key]);
     }
