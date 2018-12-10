@@ -8,7 +8,6 @@ use Telegram\Service\ResultInterface;
 
 /**
  * Interface UpdatesInterface
- *
  * @package Telegram\Method
  */
 interface UpdatesInterface

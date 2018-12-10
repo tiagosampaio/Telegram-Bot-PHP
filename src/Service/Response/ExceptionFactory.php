@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Telegram\Service\Response;
 
 use Telegram\Framework\Http\Response\ResponseExceptionInterface;

@@ -9,7 +9,6 @@ use Telegram\Command\UpdatesInterface;
 
 /**
  * Interface ApiInterface
- *
  * @package Telegram
  */
 interface ApiInterface

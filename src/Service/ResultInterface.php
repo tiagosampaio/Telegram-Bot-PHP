@@ -9,7 +9,6 @@ use Telegram\ObjectType\EntityInterface;
 
 /**
  * Interface ResultInterface
- *
  * @package Telegram\Service
  */
 interface ResultInterface

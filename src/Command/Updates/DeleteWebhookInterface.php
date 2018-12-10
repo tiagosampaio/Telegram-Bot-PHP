@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Telegram\Command\Updates;
 
 use Telegram\Command\CommandInterface;

@@ -6,7 +6,6 @@ namespace Telegram\Framework\Http\Response;
 
 /**
  * Class ResponseSuccessAbstract
- *
  * @package Telegram\Framework\Http\Response
  */
 abstract class ResponseSuccessAbstract extends ResponseAbstract implements ResponseSuccessInterface

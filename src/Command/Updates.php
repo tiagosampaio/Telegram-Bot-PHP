@@ -8,7 +8,6 @@ use Telegram\ObjectType\Entity;
 
 /**
  * Class Updates
- *
  * @package Telegram\Method
  */
 class Updates implements UpdatesInterface

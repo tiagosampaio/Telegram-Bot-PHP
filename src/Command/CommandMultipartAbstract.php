@@ -6,7 +6,6 @@ namespace Telegram\Command;
 
 /**
  * Class CommandMultipartAbstract
- *
  * @package Telegram\Command
  */
 abstract class CommandMultipartAbstract extends CommandAbstract

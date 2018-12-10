@@ -6,7 +6,6 @@ namespace Telegram\Framework\Object;
 
 /**
  * Class GodFactory
- *
  * @package Telegram\Framework\Object
  */
 class GodFactory extends FactoryAbstract

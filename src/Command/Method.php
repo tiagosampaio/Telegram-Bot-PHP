@@ -9,7 +9,6 @@ use Telegram\ObjectType\Entity;
 
 /**
  * Class Method
- *
  * @package Telegram\Command
  */
 class Method implements MethodInterface
