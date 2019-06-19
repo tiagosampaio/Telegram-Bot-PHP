@@ -2,7 +2,7 @@
 
 <p align="center">
     <a href="https://travis-ci.org/tiagosampaio/Telegram-Bot-PHP">
-        <img src="https://travis-ci.org/tiagosampaio/Telegram-Bot-PHP.svg?branch=master"/>
+        <img src="https://travis-ci.org/tiagosampaio/Telegram-Bot-PHP.svg?branch=develop"/>
     </a>
     <a href="https://www.codacy.com/app/tiagoosampaio/Telegram-Bot-PHP?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tiagosampaio/Telegram-Bot-PHP&amp;utm_campaign=Badge_Grade">
         <img src="https://api.codacy.com/project/badge/Grade/f2d11df6b0824cb98fbd7bac12b61182"/>
