@@ -10,7 +10,6 @@ use DI\ContainerBuilder;
  */
 class ContainerRepository
 {
-    
     /**
      * @var \DI\ContainerBuilder
      */
